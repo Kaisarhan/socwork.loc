@@ -1,0 +1,6 @@
+plugin:
+    name: 'kaisarhan.skk::lang.plugin.name'
+    description: 'kaisarhan.skk::lang.plugin.description'
+    author: Kaisarhan
+    icon: oc-icon-book
+    homepage: 'http://skk.kz'

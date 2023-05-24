@@ -1,0 +1,25 @@
+<div id="accountDeactivateForm">
+    {{ form_ajax('onDeactivate') }}
+        <div class="container">
+            <hr />
+        <h3>Deactivate your account?</h3>
+        <p>
+            Ваш аккаунт будет деактивирован, все детали учетной записи будут удалены. 
+            <!-- Your account will be disabled and your details removed from the site. --> <br>
+            Вы можете активировать ваш аккаунт в любое время авторизовавшись под этим аакаунтам.
+            <!-- You can reactivate your account any time by signing back in. -->
+        </p>
+        <div class="form-group py-3">
+            <label for="accountDeletePassword">Если вы хотите продолжить введите пароль:</label>
+            <input name="password" type="password" class="form-control" id="accountDeletePassword" style="max-width: 20rem;" />
+        </div>
+        <button type="submit" class="btn btn-danger">
+            Deactivate Account
+        </button>
+        <a
+            href="{{'main'|page}}">
+            Если вы передумали нажмите сюда и вы вернетесь в main
+        </a>        
+        </div>
+    {{ form_close() }}
+</div>

@@ -1,0 +1,132 @@
+title = "Main"
+url = "/main"
+layout = "default"
+is_hidden = 0
+
+[session]
+security = "user"
+redirect = "login"
+==
+<?php
+
+use Winter\User\Models\User;
+use Winter\User\Models\UserGroup;
+
+  function onInit() {
+     $this['AdminUsers'] = User::whereIsActivated(true)->get();
+/*      $this['AdminGroup'] = UserGroup::whereIsActivated(true)->get(); */
+
+}
+==
+{% component 'session' %}
+<div class="container my-5">
+    <div class="p-5 text-center bg-body-tertiary rounded-3">
+      <h3 class="text-body-emphasis">Здравствуйте! {{ user.name }} {{ user.surname }}</h3>
+      <p class="lead">
+        Здесь все пациенты разделены на группы <code>Находящийся в центре, Выписанные из центра, Проходящие обслуживание</code>
+      </p>
+    </div>
+</div>
+<div class="container clinet-conent">
+    <div class="row">
+        <div class="client-group col-4">
+            <div class="d-flex flex-column flex-md-row gap-4">
+                <div class="list-group">
+                  <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                    <img src="https://github.com/twbs.png" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
+                    <div class="d-flex gap-2 w-100 justify-content-between">
+                      <div>
+                        <h6 class="mb-0">Находящийся в центре</h6>
+                        <p class="mb-0 opacity-75">Все пациенты находящийся в центре</p>
+                      </div>
+                      <small class="text-nowrap"><span class="badge bg-danger rounded-pill">13</span></small>
+                    </div>
+                  </a>
+                  <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                    <img src="https://github.com/twbs.png" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
+                    <div class="d-flex gap-2 w-100 justify-content-between">
+                      <div>
+                        <h6 class="mb-0">Выписанные из центра</h6>
+                        <p class="mb-0 opacity-75">Все пациенты выписанные из центра</p>
+                      </div>
+                      <small class="text-nowrap"><span class="badge bg-danger rounded-pill">20</span></small>
+                    </div>
+                  </a>
+                  <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                    <img src="https://github.com/twbs.png" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
+                    <div class="d-flex gap-2 w-100 justify-content-between">
+                      <div>
+                        <h6 class="mb-0">Проходящие обслуживание</h6>
+                        <p class="mb-0 opacity-75">Все пациенты проходящие обслуживание</p>
+                      </div>
+                      <small class="text-nowrap"><span class="badge bg-danger rounded-pill">30</span></small>
+                    </div>
+                  </a>
+                  <a href="#" class="list-group-item list-group-item-action active d-flex gap-3 py-3" aria-current="true">
+                    <img src="https://github.com/twbs.png" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
+                    <div class="d-flex gap-2 w-100 justify-content-between">
+                      <div>
+                        <h6 class="mb-0">Все пациенты</h6>
+                        <p class="mb-0 opacity-75">Все пациенты находящийся в центре</p>
+                      </div>
+                      <small class="text-nowrap"><span class="badge bg-danger rounded-pill">63</span></small>
+                    </div>
+                  </a>
+                </div>
+            </div>
+        </div>
+        <div class="client-list col-8">
+            <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-body-tertiary">
+                <div class="list-group border-bottom scrollarea">
+                    <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                        <img src="https://github.com/twbs.png" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
+                        <div class="d-flex gap-2 w-100 justify-content-between">
+                          <div>
+                            <h6 class="mb-0"><strong>This las name and first name</strong></h6>
+                            <p class="mb-0 opacity-75">Here client description or more information</p>
+                          </div>
+                          <small class="text-body-secondary"><span class="badge rounded-pill text-bg-secondary">В центре</span></small>
+                        </div>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                        <img src="https://github.com/twbs.png" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
+                        <div class="d-flex gap-2 w-100 justify-content-between">
+                          <div>
+                            <h6 class="mb-0"><strong>This las name and first name</strong></h6>
+                          </div>
+                          <small class="text-body-secondary"><span class="badge rounded-pill text-bg-warning">В обслуживаний</span></small>
+                        </div>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                        <img src="https://github.com/twbs.png" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
+                        <div class="d-flex gap-2 w-100 justify-content-between">
+                          <div>
+                            <h6 class="mb-0"><strong>This las name and first name</strong></h6>
+                          </div>
+                          <small class="text-body-secondary"><span class="badge rounded-pill text-bg-success">Выписан</span></small>
+                        </div>
+                    </a> 
+                    <a href="#" class="list-group-item list-group-item-action active d-flex gap-3 py-3" aria-current="true" data-bs-toggle="modal" data-bs-target="#ClientInformation">
+                        <img src="https://github.com/twbs.png" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
+                        <div class="d-flex gap-2 w-100 justify-content-between">
+                          <div>
+                            <h6 class="mb-0"><strong>Асылбеков Алибек Касымович</strong></h6>
+                          </div>
+                          <small class="text-body-secondary"><span class="badge rounded-pill text-bg-warning">В обслуживаний</span></small>
+                        </div>
+                    </a>  
+                    <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                        <img src="https://github.com/twbs.png" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
+                        <div class="d-flex gap-2 w-100 justify-content-between">
+                          <div>
+                            <h6 class="mb-0"><strong>This las name and first name</strong></h6>
+                            <p class="mb-0 opacity-75">Here client description or more information</p>
+                          </div>
+                          <small class="text-body-secondary"><span class="badge rounded-pill text-bg-secondary">В центре</span></small>
+                        </div>
+                    </a>                     
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

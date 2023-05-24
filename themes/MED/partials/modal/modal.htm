@@ -1,0 +1,206 @@
+<!-- modal start -->
+{# start modal window NewPssword #}
+{% partial 'account/update' %}
+{# end modal window NewPssword #}
+<!-- start modal window Users -->
+<div class="modal fade" id="Users" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Пользователи</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="bg-body rounded shadow-sm">
+  {% for user in AdminUsers %}
+              <div class="d-flex align-items-center text-body-secondary pt-3">                
+                <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+                  <div class="d-flex align-items-center justify-content-between">
+                    <div class="UserObjectInformation d-flex align-items-center">
+                      <div class="UsersLogo px-2">
+                        <i class="bi bi-person-circle"></i>
+                      </div>
+                      <div class="UserInformation">
+                        <strong class="text-gray-dark">{{ user.name }} {{ user.surname }} <span class="badge text-bg-success">login: {{ user.login }}</span></strong>
+                        <span class="d-block">Почта: {{ user.email }}</span>
+                        <span class="d-block">Заходил в {{ user.last_login }} из этого IP: {{ user.last_ip_address }}</span>
+                      </div> 
+                    </div>
+                  </div>
+                </div>
+              </div>
+  {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-dismiss="modal" data-bs-target="#AddUser">Добавить</button>    
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end modal window Users -->
+
+<!-- start modal window Add user -->
+{% partial 'account/register' %}
+<!-- end modal window Add user -->
+
+<!-- start modal window client documents -->
+<div class="modal fade" id="ClientDocumentsModal" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+    <div class="modal-content">
+
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="f-carousel" id="myCarousel">
+              <div class="f-carousel__slide" data-thumb-src="{{ '/assets/image/client-img/2.jpg'|theme }}">
+                <img class="col-12" alt="" data-lazy-src="{{ '/assets/image/client-img/2.jpg'|theme }}"/>
+              </div>
+              <div class="f-carousel__slide" data-thumb-src="{{ '/assets/image/client-img/3.jpg'|theme }}">
+                <img class="col-12" alt="" data-lazy-src="{{ '/assets/image/client-img/3.jpg'|theme }}"/>
+              </div>
+              <div class="f-carousel__slide" data-thumb-src="{{ '/assets/image/client-img/4.jpg'|theme }}">
+                <img class="col-12" alt="" data-lazy-src="{{ '/assets/image/client-img/4.jpg'|theme }}"/>
+              </div>
+              <div class="f-carousel__slide" data-thumb-src="{{ '/assets/image/client-img/doc.pdf'|theme }}">
+                <!-- <img class="col-12" alt="" data-lazy-src="/assets/image/client-img/doc.pdf"/> -->
+                <embed src="/assets/image/client-img/doc.pdf" width="95%" height="100%"/>
+              </div>
+              <!-- <object><embed src="ссылка файла pdf" width="700" height="500" /></object> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-dismiss="modal" data-bs-target="#ClientInformation">Назад</button>
+        <!-- <button type="button" class="btn btn-primary">Сохранить изменения</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end modal window client documents -->
+
+<!-- start modal window client information -->
+<div class="modal fade modal-client" id="ClientInformation" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Асылбеков Алибек Касымович <small class="text-body-secondary"><span class="badge rounded-pill text-bg-warning">В обслуживаний</span></small></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-3">
+                        <img src=" {{ '/assets/image/client-img/2.JPG'|theme }}" class="rounded col-12" alt="client photo">
+                       
+                    </div>
+                    <div class="col-4 client-data">
+                        <p><strong>Фамилия: </strong> Асылбеков</p>
+                        <p><strong>Имя: </strong> Алибек</p>                        
+                        <p><strong>Отчество: </strong> Касымович</p>
+                        <p><strong>Дата рождения: </strong> 1960.09.20</p>
+                        <p><strong>ИИН: </strong>369258456</p>
+                        <p><strong>Место рождения: </strong>Астана</p>
+                        <p><strong>Адрес прописки: </strong>Карталинская 20/2 кв20</p>                        
+                    </div>
+                    <div class="col-5 client-data">
+                        <p><strong>Судимость: </strong>293 ч. 3 п. 2 УК Республики Казахстан</p>
+                        <p><strong>Инвалидность: </strong>Третья группа инвалидности</p>
+                        <p><strong>Информация о родственниках: </strong>Ұлы-Турсынбаев Бауыржан тел-87775799959
+                          Астана қаласы әкімдігінің
+                          «Шарапат» әлеуметтік қызмет көрсету орталығына»кетуіне байланысты
+                          ЖОЛДАМА-№108	28.11.2018
+                          Қарттар үйіне к.б.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <!-- Section: Timeline -->
+                        <section class="py-5">
+                            <h5 class="fw-bold">История</h5>
+                            <h5>Посупление/Выписка:</h5>
+                            <ul class="timeline">
+                              <li class="timeline-item mb-1">
+                                <p class="text-muted mb-2"> 2022.03.15/22.09.20</p>
+                              </li>                      
+                              <li class="timeline-item mb-1">
+                                <p class="text-muted mb-2">2021.09.20/В центе</p>
+                              </li>
+                            </ul>
+                        </section>
+                        <!-- Section: Timeline -->
+                    </div>
+                    <div class="col-9">
+                      <div class="client-documents py-5">
+                        <h4>Документы</h4>
+                        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-dismiss="modal" data-bs-target="#ClientDocumentsModal">Документы</button>                    
+                      </div>
+                      <div class="accordion" id="accordionCollapse">
+                        <div class="accordion-item">
+                          <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                              <strong>Социально - медицинские, бытовые </strong>
+                            </button>
+                          </h2>
+                          <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionCollapse">
+                            <div class="accordion-body">
+                              <strong>Мед осмотр:</strong>
+                              <div>
+                                анализы на ВИЧ,РВ, ФГ от 23.10.2017г -норма.Повторно ФГ от 07.06.2018г - норма.
+                              </div>
+                              <strong>Примечание:</strong>
+                              <div>
+                                Содействие в оформлении документов в МСУ. В 28.11.2018г направлен в МСУ " Шарапат" Вернулся из дома престарелых 16.09.2019г. В 27.08.2020г направлен в Хоспис ТОО "Омар"
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="accordion-item">
+                          <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                              <strong>Социально - психологические, трудовые, культурные</strong>
+                            </button>
+                          </h2>
+                          <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionCollapse">
+                            <div class="accordion-body">
+                              <div>
+                                По состоянию здоровья библиотеку не посещает.
+                              </div>
+                              <strong>Примечание: </strong>Нет
+                            </div>
+                          </div>
+                        </div>
+                        <div class="accordion-item">
+                          <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                              <strong>Социально - экономические</strong>
+                            </button>
+                          </h2>
+                          <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionCollapse">
+                            <div class="accordion-body">
+                              <div>Оказано содействие в переводе пенсии в г. Астана.</div>
+                              <strong>Примечание: </strong>Нет
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                </div>
+            </div>     
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+          <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-dismiss="modal" data-bs-target="#ClientDocumentsModal">Понял</button> -->
+        </div>
+      </div>
+    </div>
+</div>
+<!-- end modal window client information -->
+<!-- modal end -->

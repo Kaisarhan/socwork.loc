@@ -1,0 +1,20 @@
+title = "Blog-category"
+url = "/blog/category/:slug"
+layout = "default"
+description = "Viewing blog posts in a specific category."
+is_hidden = 0
+
+[blogPosts]
+pageNumber = "{{ :page }}"
+categoryFilter = ":slug"
+postsPerPage = 10
+noPostsMessage = "No posts found"
+sortOrder = "published_at desc"
+categoryPage = "blog/category"
+postPage = 404
+==
+<div class="row">
+    <div class="col-sm-12">
+        {% component 'blogPosts' %}
+    </div>
+</div>

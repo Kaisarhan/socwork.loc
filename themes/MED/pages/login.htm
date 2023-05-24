@@ -1,0 +1,22 @@
+title = "Login"
+url = "/"
+layout = "default"
+is_hidden = 0
+==
+<?
+function onStart() {
+    $this['redirect'] = $this->pageUrl('main');
+}
+?>
+==
+
+    {% partial 'account/default' %}
+{# {% if user %}
+    {% partial 'account/default' %}
+{% else %}
+
+
+     {% partial account ~ '::activation_check' %}
+    {% partial account ~ '::update'  %}
+    {% partial account ~ '::deactivate_link' %} 
+{% endif %} #}
